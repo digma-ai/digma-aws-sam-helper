@@ -157,6 +157,7 @@ Resources:
           Environment:
             - Name: JAVA_TOOL_OPTIONS 
               Value: >-
+                -javaagent:/shared-vol/dig-agent.jar 
                 -javaagent:/shared-vol/otel-agent.jar 
                 -Dotel.javaagent.extensions=/shared-vol/digma-ext.jar 
                 -Dotel.exporter.otlp.traces.endpoint=https://collector.stag01.digma.systems
@@ -167,10 +168,13 @@ Resources:
                 -Dotel.instrumentation.common.experimental.controller.telemetry.enabled=true 
                 -Dotel.instrumentation.common.experimental.view.telemetry.enabled=true 
                 -Dotel.instrumentation.experimental.span-suppression-strategy=none 
+                -Dotel.instrumentation.jdbc-datasource.enabled=true
             - Name: OTEL_SERVICE_NAME
               Value: pet-clinic
             - Name: OTEL_RESOURCE_ATTRIBUTES
               Value: digma.environment=PETCLINIC,digma.environment.type=Public
+            # - Name: DIGMA_AUTOINSTRUMENT_PACKAGES
+            #   Value: org.springframework
 
           LogConfiguration:
             LogDriver: 'awslogs'
@@ -183,7 +187,7 @@ Resources:
               SourceVolume: otlp-volume
 
         - Name: java-agent-initializer
-          Image: digmaai/java-agent-initializer:latest
+          Image: digmaai/java-agent-initializer:0.0.2
           Essential: false
           LogConfiguration:
             LogDriver: 'awslogs'
