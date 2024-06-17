@@ -9,8 +9,9 @@ This repository contains an example of an instrumented pet-clinic java spring ap
 
 2. Navigate to the `example-app` folder and run:
    ``` bash
-   sam build && sam deploy --guided
+   sam build && sam deploy --guided --parameter-overrides DigmaCollectorUrl=<DIGMA-COLLECTOR-URL>
    ```
+
 
 ## How to instrument a java application
 Follow this step in order to instrument your java application defined in an AWS SAM template.

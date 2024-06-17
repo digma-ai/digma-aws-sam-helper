@@ -3,6 +3,10 @@ Transform: 'AWS::Serverless-2016-10-31'
 Description: >
   AWS SAM Template for running Java Spring PetClinic app on Fargate with VPC and subnets creation.
 
+Parameters:
+  DigmaCollectorUrl:
+    Type: String
+
 Resources:
   # VPC
   VPC:
@@ -156,11 +160,11 @@ Resources:
               Condition: SUCCESS
           Environment:
             - Name: JAVA_TOOL_OPTIONS 
-              Value: >-
+              Value: !Sub |
                 -javaagent:/shared-vol/dig-agent.jar 
                 -javaagent:/shared-vol/otel-agent.jar 
                 -Dotel.javaagent.extensions=/shared-vol/digma-ext.jar 
-                -Dotel.exporter.otlp.traces.endpoint=https://collector.stag01.digma.systems
+                -Dotel.exporter.otlp.traces.endpoint= ${DigmaCollectorUrl}
                 -Dotel.traces.exporter=otlp 
                 -Dotel.metrics.exporter=none 
                 -Dotel.logs.exporter=none 
