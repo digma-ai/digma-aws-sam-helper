@@ -160,11 +160,11 @@ Resources:
               Condition: SUCCESS
           Environment:
             - Name: JAVA_TOOL_OPTIONS 
-              Value: !Sub |
+              Value: !Sub >-
                 -javaagent:/shared-vol/dig-agent.jar 
                 -javaagent:/shared-vol/otel-agent.jar 
                 -Dotel.javaagent.extensions=/shared-vol/digma-ext.jar 
-                -Dotel.exporter.otlp.traces.endpoint= ${DigmaCollectorUrl}
+                -Dotel.exporter.otlp.traces.endpoint=${DigmaCollectorUrl}
                 -Dotel.traces.exporter=otlp 
                 -Dotel.metrics.exporter=none 
                 -Dotel.logs.exporter=none 
