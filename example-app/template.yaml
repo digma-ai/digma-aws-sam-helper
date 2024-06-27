@@ -163,7 +163,7 @@ Resources:
               Value: !Sub >-
                 -javaagent:/shared-vol/dig-agent.jar 
                 -javaagent:/shared-vol/otel-agent.jar 
-                -Dotel.javaagent.extensions=/shared-vol/digma-ext.jar 
+                -Dotel.javaagent.extensions=/shared-vol/dig-ext.jar 
                 -Dotel.exporter.otlp.traces.endpoint=${DigmaCollectorUrl}
                 -Dotel.traces.exporter=otlp 
                 -Dotel.metrics.exporter=none 
