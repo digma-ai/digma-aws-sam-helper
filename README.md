@@ -114,6 +114,7 @@ Follow this step in order to instrument your java application defined in an AWS 
                 -Dotel.instrumentation.common.experimental.view.telemetry.enabled=true 
                 -Dotel.instrumentation.experimental.span-suppression-strategy=none 
                 -Dotel.instrumentation.jdbc-datasource.enabled=true
+                -Dotel.instrumentation.digma-methods.enabled=false
             - Name: OTEL_SERVICE_NAME
               Value: pet-clinic
             - Name: OTEL_RESOURCE_ATTRIBUTES
