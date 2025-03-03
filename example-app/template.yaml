@@ -192,7 +192,7 @@ Resources:
               SourceVolume: otlp-volume
 
         - Name: java-agent-initializer
-          Image: digmaai/java-agent-initializer:0.0.2
+          Image: digmaai/java-agent-initializer:0.0.3
           Essential: false
           LogConfiguration:
             LogDriver: 'awslogs'
