@@ -75,7 +75,7 @@ Follow this step in order to instrument your java application defined in an AWS 
    ECSTaskDefinition:
    ...
         - Name: java-agent-initializer
-          Image: digmaai/java-agent-initializer:0.0.2
+          Image: digmaai/java-agent-initializer:0.0.3
           Essential: false
           LogConfiguration:
             LogDriver: 'awslogs'
